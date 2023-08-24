@@ -150,12 +150,10 @@ header {
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
 }
 
-/* .dot:hover{
-	cursor: pointer;
-} */
 .dot_selected {
 	background-color: #fff;
 }
+
 /* Fin du code CSS pour le carousel */
 #banner p {
 	font-family: 'Roboto Slab', sans-serif;
@@ -184,7 +182,6 @@ header {
 	padding-left:2em;
 	width: 65%;
 	margin-bottom: 1em;
-
 }
 
 #products {

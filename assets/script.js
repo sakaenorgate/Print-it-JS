@@ -17,56 +17,61 @@ const slides = [
 	}
 ]
 
-let numero = 0;
+let numeroId = 0;
 
-const flecheLeft = document.querySelector(".arrow_left");
-flecheLeft.addEventListener("click", function() { ChangeSlide(-1);
-	console.log(flecheLeft);
+const flecheLeft = document.querySelector(".arrow_left");	/* Define flecheLeft with selector .arrow_left */
+flecheLeft.addEventListener("click", function() { ChangeSlide(-1);	/* Add event: if click flecheLeft then call function()ChangeSlide */
+
+console.log('flecheLeft cliked!');
 })
 
-const flecheRight = document.querySelector(".arrow_right");
-flecheRight.addEventListener("click", function() { ChangeSlide(1);
-	console.log(flecheRight);
+const flecheRight = document.querySelector(".arrow_right");	/* Define flecheRight with selector .arrow_right */
+flecheRight.addEventListener("click", function() { ChangeSlide(1);	/* Add event: if click flechright then call function()ChangeSlide */
+
+console.log('flecheRight clicked!');
 })
 
-console.log(slides.length);
+console.log("slides.lengths: "+slides.length);
 
 function ChangeSlide(sens) {
-	numero = numero + sens;
-	if (numero > slides.length -1)
-		numero = 0;
-	if (numero < 0)
-		numero = slides.length -1;
+	numeroId = numeroId + sens;	/* To left: numeroId -1 / To right: numeroId +1 */
+	if (numeroId > slides.length -1)
+		numeroId = 0;	/* After the last slide -> get back to the first slide */
+	if (numeroId < 0)	/* Before the first slide -> go to the last slide */
+		numeroId = slides.length -1;
 
-	document.querySelector(".banner-img").src = './assets/images/slideshow/' + slides[numero]['image'];
-	document.getElementById("text").innerHTML = slides[numero]['tagLine'];
+		/* Replace img with selector .banner-img by current slide image */
+	document.querySelector(".banner-img").src = './assets/images/slideshow/' + slides[numeroId]['image'];
+		/* Replace text in #text by current slide tagLine */
+	document.getElementById("text").innerHTML = slides[numeroId]['tagLine'];
 
 	showDotSelected();
 
-	console.log(numero);
+	console.log("numeroId: "+numeroId);
 }
-
+	/* Define codeDot as content of selector .dots = <p class="dot"> x 4 */
 const codeDot = document.querySelector(".dots").innerHTML = '<p class="dot"></p> '.repeat(slides.length);
+
+	/* Create table of elements in dots with class .dot */
 var dots = document.getElementsByClassName("dot");
 
 showDotSelected();
 function showDotSelected() {
-	var i;
-	
-	if (numero +1> slides.length) {numero = 0}
-	console.log(numero);
 
+	var i;
+		/* Replace all of 4 dots' class .dot_selected by "" */
 	for (i = 0; i < dots.length; i++) {
 		dots[i].className = dots[i].className.replace(" dot_selected", "");	
 	}
-	dots[numero].className += " dot_selected";
+		/* Add class .dot_selected to current slide dot  */
+	dots[numeroId].className += " dot_selected";
 	
 	console.log(dots[0]);
 	console.log(dots[1]);
 	console.log(dots[2]);
 	console.log(dots[3]);
 	console.log(codeDot);
-	console.log(i+"!!!");
+	console.log("i: "+i+"!!!");
 
 }
 
