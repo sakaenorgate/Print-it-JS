@@ -77,7 +77,7 @@ function showDotSelected() {
 	console.log(dots[2]);
 	console.log(dots[3]);
 	console.log(codeDot);
-	console.log("i: "+i+"!!!");
+	console.log("i: "+i+" dots!!!");
 
 }
 
